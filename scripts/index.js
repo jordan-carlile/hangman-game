@@ -4,12 +4,23 @@ let chosenWord = "";
 let wrongGuesses = [];
 let numGuesses = 0;
 let candidate = [];
+let winCounter = 0;
 // Function Definitions
 
 function startGame() {
+
+    console.log("starting game")
     
     // initialize to 9 guesses
     numGuesses = 9;
+
+    candidate = [];
+    console.log(candidate)
+    wrongGuesses = [];
+
+    // initialize HTML
+
+    
 
     chosenWord = words[Math.floor(Math.random() * words.length)]
     console.log("Chosen word is:", chosenWord);
@@ -20,8 +31,11 @@ function startGame() {
     for(let i = 0; i < numBlanks; i++){
         candidate.push("_");
     }
-
-
+    
+    // update HMTL
+    document.getElementById("guesses-left").innerHTML = numGuesses;
+    document.getElementById("word-blanks").innerHTML = candidate.join(" ");
+    document.getElementById("wrong-guesses").innerHTML = wrongGuesses.join(" ");
 
 }
 
@@ -62,12 +76,30 @@ function roundComplete() {
 
     document.getElementById("word-blanks").innerHTML = candidate.join(" ");
 
+    document.getElementById("wrong-guesses").innerHTML = wrongGuesses.join(" ");
+
+        // If we have gotten all the letters to match the solution...
+    console.log("chosenword =",chosenWord);
+    console.log("candidate =", candidate.join(""));
+    console.log(chosenWord == candidate.join(""))
+    if (chosenWord == candidate.join("")) {
+        console.log("entered")
+        // ..add to the win counter & give the user an alert.
+        winCounter++;
+        document.getElementById("win-counter").innerHTML = winCounter;
+
+        alert("You win!");
+
+        startGame();
+    }
+
     
 
 }
 
 // Main Process
 startGame();
+
 
 document.onkeyup = function(event) {
     let letterGuessed = event.key;
