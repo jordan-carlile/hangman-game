@@ -1,8 +1,9 @@
 body {
     background-color: #3B4CCA;
+    font-family: 'Permanent Marker', cursive;
+    text-align: center;
 }
 .title {
-    text-align: center;
     color: #FFDE00;
 
 }
@@ -12,3 +13,4 @@ body {
     margin: 20px;
 
 }
+

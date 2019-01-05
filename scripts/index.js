@@ -1,5 +1,5 @@
 // Global Variables
-const words = ["pikachu", "squirtle", "charmander", "bulbasaur"];
+// words is a globally available array from separate file
 let chosenWord = "";
 let wrongGuesses = [];
 let numGuesses = 0;
@@ -38,6 +38,11 @@ function startGame() {
 function checkLetter(letter) {
 
     let correct = false;
+
+    if(wrongGuesses.indexOf(letter) != -1){
+        // already guessed this letter incorrectly
+        return
+    }
 
     for(let i = 0; i < chosenWord.length; i++) {
         if (chosenWord[i] == letter){
@@ -98,11 +103,17 @@ startGame();
 document.onkeyup = function(event) {
     let letterGuessed = event.key;
     if(numGuesses > 1) {
-        checkLetter(letterGuessed);
-        roundComplete();
+        if( 
+            event.keyCode >= 65 && event.keyCode <= 90 || 
+            event.keyCode >= 97 && event.keyCode <= 122
+          ) {
+            checkLetter(letterGuessed);
+            roundComplete();
+            }
+
     }
     else {
-        alert("Play Again?")
+        alert(`Sorry the selected word was: ${chosenWord} \n Play Again?`);
         startGame();
     }
 }
