@@ -15,13 +15,8 @@ function startGame() {
     numGuesses = 9;
 
     candidate = [];
-    console.log(candidate)
     wrongGuesses = [];
-
-    // initialize HTML
-
     
-
     chosenWord = words[Math.floor(Math.random() * words.length)]
     console.log("Chosen word is:", chosenWord);
 
@@ -71,11 +66,10 @@ function checkLetter(letter) {
 }
 
 function roundComplete() {
+    
     // update HMTL
     document.getElementById("guesses-left").innerHTML = numGuesses;
-
     document.getElementById("word-blanks").innerHTML = candidate.join(" ");
-
     document.getElementById("wrong-guesses").innerHTML = wrongGuesses.join(" ");
 
         // If we have gotten all the letters to match the solution...
@@ -103,8 +97,12 @@ startGame();
 
 document.onkeyup = function(event) {
     let letterGuessed = event.key;
-
-    checkLetter(letterGuessed);
-
-    roundComplete();
+    if(numGuesses > 1) {
+        checkLetter(letterGuessed);
+        roundComplete();
+    }
+    else {
+        alert("Play Again?")
+        startGame();
+    }
 }
