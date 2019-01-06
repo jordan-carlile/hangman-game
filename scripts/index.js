@@ -17,7 +17,7 @@ function startGame() {
     candidate = [];
     wrongGuesses = [];
     
-    chosenWord = words[Math.floor(Math.random() * words.length)]
+    chosenWord = words[Math.floor(Math.random() * words.length)].toLowerCase();
     console.log("Chosen word is:", chosenWord);
 
     let numBlanks = chosenWord.length;
