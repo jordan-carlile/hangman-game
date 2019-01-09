@@ -2,9 +2,9 @@
     display: grid;
 
     /* grid definition */
-    grid-template-columns: 200px auto auto 200px;
-    grid-template-rows: 25vh 25vh 25vh 25vh;
-    grid-gap: 50px;
+    grid-template-columns: 10% auto auto 10%;
+    grid-template-rows: 10vh 12.5vh 80vh;
+    grid-gap: 2.5%;
 
 }
 
@@ -56,4 +56,5 @@ body {
     background-color: white;
 
 }
+
 
